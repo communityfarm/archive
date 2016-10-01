@@ -1,13 +1,21 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    mini_portile2 (2.1.0)
+    nokogiri (1.6.8)
+      mini_portile2 (~> 2.1.0)
+      pkg-config (~> 1.1.7)
+    pkg-config (1.1.7)
     rake (11.3.0)
+    the_community_farm (0.1.0)
+      nokogiri (~> 1.6)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   rake
+  the_community_farm
 
 RUBY VERSION
    ruby 2.3.1p112
