@@ -5,3 +5,4 @@ ruby '2.3.1'
 
 gem 'rake'
 gem 'the_community_farm'
+gem 'dotenv'
