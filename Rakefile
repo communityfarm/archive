@@ -37,13 +37,12 @@ task default: :dotenv do
   boxes_by_week.group_by { |box| box[:name] }.each do |box_name, boxes|
     filename = "#{URI.encode_www_form_component(box_name)}.xml"
     rss = RSS::Maker.make('atom') do |maker|
-      maker.channel.id = boxes_url
+      maker.channel.id = "https://communityfarm.github.io/api/#{filename}"
       maker.channel.author = 'Community Farm'
       maker.channel.updated = boxes.first[:scrape][:created_at]
       maker.channel.title = box_name
       boxes.each do |week|
         maker.items.new_item do |item|
-          item.id = "https://communityfarm.github.io/api/#{filename}"
           item.id = "#{box_name} #{week[:items_sha]}"
           item.link = boxes_url
           item.title = "#{box_name} #{week[:scrape][:created_at]}"
