@@ -4,8 +4,9 @@ require 'pry'
 require 'time'
 require 'the_community_farm'
 require 'rss'
+require 'git'
 
-task default: :dotenv do
+task build_xml: :dotenv do
   require 'rest-client'
   require 'json'
 
@@ -55,3 +56,20 @@ task default: :dotenv do
     File.write("build/#{filename}", rss.to_s)
   end
 end
+
+task build_api: :build_xml
+
+task deploy_api: :build_api do
+  git = Git.clone('https://github.com/communityfarm/api', 'communityfarm-api', path: Dir.mktmpdir)
+  cp_r 'build/.', git.dir.path
+  git.chdir do
+    if `git status -s`.chomp.empty?
+      warn "No changes to deploy"
+      exit
+    end
+    git.add
+    git.commit('Rebuild API')
+  end
+end
+
+task default: :deploy_api
