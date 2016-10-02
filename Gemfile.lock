@@ -1,10 +1,27 @@
+GIT
+  remote: https://github.com/communityfarm/the_community_farm
+  revision: 5baf21b9989415b9378a70209a82d3de380d3b15
+  branch: master
+  specs:
+    the_community_farm (0.2.0)
+      nokogiri (~> 1.6)
+
 GEM
   remote: https://rubygems.org/
   specs:
     coderay (1.1.1)
+    domain_name (0.5.20160826)
+      unf (>= 0.0.5, < 1.0.0)
     dotenv (2.1.1)
+    http-cookie (1.0.3)
+      domain_name (~> 0.5)
+    json (2.0.2)
     method_source (0.8.2)
+    mime-types (3.1)
+      mime-types-data (~> 3.2015)
+    mime-types-data (3.2016.0521)
     mini_portile2 (2.1.0)
+    netrc (0.11.0)
     nokogiri (1.6.8)
       mini_portile2 (~> 2.1.0)
       pkg-config (~> 1.1.7)
@@ -14,18 +31,25 @@ GEM
       method_source (~> 0.8.1)
       slop (~> 3.4)
     rake (11.3.0)
+    rest-client (2.0.0)
+      http-cookie (>= 1.0.2, < 2.0)
+      mime-types (>= 1.16, < 4.0)
+      netrc (~> 0.8)
     slop (3.6.0)
-    the_community_farm (0.1.0)
-      nokogiri (~> 1.6)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.7.2)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   dotenv
+  json
   pry
   rake
-  the_community_farm
+  rest-client
+  the_community_farm!
 
 RUBY VERSION
    ruby 2.3.1p112
