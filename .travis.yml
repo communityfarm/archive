@@ -4,3 +4,4 @@ rvm:
   - 2.3.1
 before_install:
   - echo -e "machine github.com\n  login $GITHUB_ACCESS_TOKEN" >> ~/.netrc
+  - chmod 0600 ~/.netrc
