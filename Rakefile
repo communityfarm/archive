@@ -60,7 +60,10 @@ end
 task build_api: :build_xml
 
 task deploy_api: :build_api do
-  git = Git.clone('https://github.com/communityfarm/api', 'communityfarm-api', path: Dir.mktmpdir)
+  git = Git.clone('https://github.com/communityfarm/api', 'communityfarm-api', path: Dir.mktmpdir).tap do |g|
+    g.config('user.name', 'Chris Mytton')
+    g.config('user.email', 'chrismytton@users.noreply.github.com')
+  end
   cp_r 'build/.', git.dir.path
   git.chdir do
     if `git status -s`.chomp.empty?
