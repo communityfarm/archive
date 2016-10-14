@@ -72,6 +72,7 @@ task deploy_api: :build_api do
     end
     git.add
     git.commit('Rebuild API')
+    git.push(:origin, :master)
   end
 end
 
