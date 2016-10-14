@@ -44,7 +44,7 @@ task build_xml: :dotenv do
       maker.channel.title = box_name
       boxes.each do |week|
         maker.items.new_item do |item|
-          item.id = "#{box_name} #{week[:items_sha]}"
+          item.id = "https://communityfarm.github.io/api/#{filename}##{week[:items_sha]}"
           item.link = boxes_url
           item.title = "#{box_name} #{week[:scrape][:created_at]}"
           item.content.content = week[:items].join('<br>')
