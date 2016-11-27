@@ -40,9 +40,9 @@ task build_xml: :dotenv do
     rss = RSS::Maker.make('atom') do |maker|
       maker.channel.id = "https://communityfarm.github.io/api/#{filename}"
       maker.channel.author = 'Community Farm'
-      maker.channel.updated = boxes.first[:scrape][:created_at]
+      maker.channel.updated = boxes.map { |b| b[:scrape][:created_at] }.max
       maker.channel.title = box_name
-      boxes.each do |week|
+      boxes.sort_by { |b| b[:scrape][:created_at] }.reverse.each do |week|
         maker.items.new_item do |item|
           item.id = "https://communityfarm.github.io/api/#{filename}##{week[:items_sha]}"
           item.link = boxes_url
